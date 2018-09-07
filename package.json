@@ -1,16 +1,28 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
-  "engines": {
-    "node": ">=6.13.0"
+  "name": "stock_fluctuation",
+  "version": "1.0.0",
+  "description": "Stock fluctuation component for robin-hackers app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "build": "webpack --watch --mode production"
   },
-  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobinHackers/stock_fluctuation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobinHackers/stock_fluctuation/issues"
+  },
+  "homepage": "https://github.com/RobinHackers/stock_fluctuation/blob/master/README.md",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
     "mongoose": "^5.2.13",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -22,10 +34,9 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "morgan": "^1.9.0",
-    "webpack-dev-server": "^3.1.7",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
   }
 }
-
