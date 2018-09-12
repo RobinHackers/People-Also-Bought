@@ -25,13 +25,18 @@ app.get('/people-also-bought', function(req, res) {
   //   if (err) return console.log(err);
   //   res.json(results)
   // })
-  Company.find(({}), (err, results) => {
-    if (err) {
-      return console.log(err)
-    } else {
-      res.json(results);
-    }
+  Company.find({}).limit(10).exec((err, results) => {
+    if (err) return console.log(err);
+    console.log('SERVER RESULT', results)
+    res.json(results)
   })
+  // Company.find(({}), (err, results) => {
+  //   if (err) {
+  //     return console.log(err)
+  //   } else {
+  //     res.json(results);
+  //   }
+  // })
   // res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 //Router for Server
