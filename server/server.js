@@ -33,6 +33,9 @@ app.get('/people-also-bought', function(req, res) {
     }
     // console.log('SERVER RESULT', results)
   })
+})
+
+
   // Company.find(({}), (err, results) => {
   //   if (err) {
   //     return console.log(err)
@@ -41,7 +44,6 @@ app.get('/people-also-bought', function(req, res) {
   //   }
   // })
   // res.sendFile(path.join(__dirname, '../public/index.html'))
-})
 
 // app.get('/people-also-bought/company/:company', (req, res) => {
 //   const { company } = req.params;
