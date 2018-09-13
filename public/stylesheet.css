@@ -1,0 +1,101 @@
+body {
+    background-color: white;
+    font-family: D-DIN;
+}
+
+h1 .marketopen {
+    color: #171718;
+    font-size: 26px;
+    font-weight: medium;
+    margin-left: 20px;
+
+}
+
+.flex-container {
+  align-items: center;
+  border: 1px solid #f4f4f5;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* padding: 20px; */
+  /* margin: 20; */ 
+  list-style: none;
+  overflow: hidden;
+  /* height: 190px;
+   */
+  /* display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex; */
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+/* .flex-container > div {
+
+  flex: 1;
+  border: 5px solid #f4f4f5;
+  width: 300px;
+  background: white;
+  padding: 10px;
+  width: 200px;
+  height: 250px;
+  margin-top: 10px;
+  
+  line-height: 250px;
+  color: black;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+} */
+
+/* .flex-container:hover > div {
+  background: #f4f4f5;
+} */
+
+.flex-item {
+  /* align-self: left; */
+  background: white;
+  /* flex: 20px; */
+  border: 1px solid #f4f4f5;
+  padding: 22px;
+  margin-right: 12px;
+  width: 160.5px;
+  height: 190px;
+  
+  /* line-height: 250px; */
+  color:black;
+  /* font-weight: bold;
+  font-size: 3em;
+  text-align: center; */
+}
+.flex-item:hover {
+  background: #f4f4f5;  
+}
+
+.company {
+  font-size: 16px;
+  padding: 8px;
+}
+
+.company-title {
+  font-size: 13px;
+  font-weight: bold;
+  font-display: margin-top;
+}
+
+/* .company-title:hover {
+  color: #e62117;
+  cursor: pointer;
+} */
+
+.company-price {
+  color: #21ce99 ;
+  font-size: 26px;
+  font-display: bold;
+  /* line-height: 0.75; */
+}
+
+
+

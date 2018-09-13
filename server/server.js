@@ -25,15 +25,40 @@ app.get('/people-also-bought', function(req, res) {
   //   if (err) return console.log(err);
   //   res.json(results)
   // })
-  Company.find(({}), (err, results) => {
+  Company.find({}).limit(10).exec((err, results) => {
     if (err) {
-      return console.log(err)
+      console.log(err);
     } else {
-      res.json(results);
+      res.json(results)
     }
+    // console.log('SERVER RESULT', results)
   })
-  // res.sendFile(path.join(__dirname, '../public/index.html'))
 })
+
+
+  // Company.find(({}), (err, results) => {
+  //   if (err) {
+  //     return console.log(err)
+  //   } else {
+  //     res.json(results);
+  //   }
+  // })
+  // res.sendFile(path.join(__dirname, '../public/index.html'))
+
+// app.get('/people-also-bought/company/:company', (req, res) => {
+//   const { company } = req.params;
+
+//   database.Company.find({ company }, null, (err, result) => {
+//     if (err) {
+//       return console.log('callback err');
+//     }
+//     console.log(req.params);
+//     return res.json(result);
+//   });
+
+// })
+
+
 //Router for Server
 // app.use('/peoplebought', peoplebought)
 
