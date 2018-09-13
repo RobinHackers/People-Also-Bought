@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "../public/stylesheet.css";
 import CompanyList from './CompanyList.jsx';
 import ReactTooltip from 'react-tooltip';
-var $ = require("jquery");
+// var $ = require("jquery");
 // import CompanyItem from './CompanyItem.jsx';
 const axios = require('axios');
 
@@ -55,29 +55,6 @@ class App extends React.Component {
 //     // this.handleClick = this.handleClick.bind(this);
 //     this.getCompanies = this.getCompanies.bind(this);
 //   }
-
-//   getCompanies() {
-//     $.ajax({
-//         method: 'GET',
-//         url: "http://localhost:3003/people-also-bought",
-//         success: (results) => {
-//           console.log('RESULTS', results);
-//           this.setState({
-//             companies: results
-//           })
-//         }, 
-//         error:() => {
-//           console.log('GET not successful')
-//         }
-//     })
-//   }
- 
-
-  // ActionLink() {
-  //   handleClick(e) {
-  //     e.preventDefault();
-  //     console.log('The link was clicked.');
-  //   }
   
   //   return (
   //     <a href="#" onClick={handleClick}>
@@ -85,24 +62,22 @@ class App extends React.Component {
   //     </a>
   //   );
   // }
-  
-  // getCompanies() {
-  //   axios.get('http://localhost:3003/people-also-bought')
-  //     .then(res => {
-  //       console.log('RESPONSE', res)
-  //       this.setState({
-  //         data: res.data
-  //       });
-  //     });
-  //     console.log('dataaaaa', data)
-  // }
-
+  componentDidMount() {
+      axios.get(`http://localhost:3003/people-also-bought`)
+      .then(res => {
+        console.log('RESPONSE', res)
+        this.setState({
+          data: res.data
+        });
+      });
+      console.log('dataaaaa', data)
+  }
+    
   render() {
     return (
       <div>
          <h1 class="marketopen">People also bought</h1>
          <div>
-           {/* {this.getCompanies} */}
          <CompanyList companies={this.state.companies}/>
         </div>
       </div>
