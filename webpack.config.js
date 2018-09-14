@@ -1,10 +1,10 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, "client", "App.jsx"),
+  entry: path.join(__dirname, 'client', 'App.jsx'),
   output: {
-    filename: "bundle.js",
-    path: path.join(__dirname, "public")
+    filename: 'bundle.js',
+    path: path.join(__dirname, 'public'),
   },
   module: {
     rules: [
@@ -12,18 +12,17 @@ module.exports = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
-      }, 
+          loader: 'babel-loader',
+        },
+      },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   performance: {
-      maxEntrypointSize: 512000,
-      maxAssetSize: 512000
-  }
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
 };
-

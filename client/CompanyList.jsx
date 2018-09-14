@@ -1,24 +1,19 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import Company from './Company.jsx';
-import "../public/stylesheet.css";
+// import Slider from "react-slick";
+// import App from './App.jsx';
 
-var CompanyList = (props) => (
-  <div class="flex-container">
- {props.companies.map(company => 
-        <Company company={company} />
-      )}
+const CompanyList = ({ companies }) => (
+  <div className="flex-container">
+    {companies.map(company => (
+      <Company company={company} />
+    ))}
   </div>
-  );
+);
 
-  export default CompanyList;
+export default CompanyList;
 
-
-//   onClick={props.onClick}
-
-// var CompanyList = (props) => (
-//   <div className="company-list">
-//     {props.companies.map(company => 
-//       <Company company={company} />
-//     )}
-//   </div>
-// );
+CompanyList.propTypes = {
+  companies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};

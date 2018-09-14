@@ -26,12 +26,16 @@
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
     "mongoose": "^5.2.13",
+    "morgan": "^1.9.0",
     "node-mongo-seeds": "^3.1.0",
     "path": "^0.12.7",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router": "^4.3.1",
+    "react-slick": "^0.23.1",
     "react-tooltip": "^3.8.4",
+    "slick-carousel": "^1.8.1",
     "webpack": "^4.17.2"
   },
   "devDependencies": {
@@ -48,7 +52,6 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
-    "morgan": "^1.9.0",
     "style-loader": "^0.23.0",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.7"

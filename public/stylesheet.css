@@ -17,7 +17,7 @@ h1 .marketopen {
   flex-direction: row;
   flex-wrap: nowrap;
   /* padding: 20px; */
-  /* margin: 20; */ 
+  /* margin: 20; */
   list-style: none;
   overflow: hidden;
   /* height: 190px;
@@ -27,7 +27,7 @@ h1 .marketopen {
   display: -ms-flexbox;
   display: -webkit-flex; */
   display: flex;
-  
+
   -webkit-flex-flow: row wrap;
   justify-content: flex-start;
 }
@@ -63,7 +63,7 @@ h1 .marketopen {
   margin-right: 12px;
   width: 160.5px;
   height: 190px;
-  
+
   /* line-height: 250px; */
   color:black;
   /* font-weight: bold;

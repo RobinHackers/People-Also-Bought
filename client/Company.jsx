@@ -1,31 +1,33 @@
-import React from "react";
-import "../public/stylesheet.css";
-import ReactTooltip from 'react-tooltip';
+import React from 'react';
+import PropTypes from 'prop-types';
+// import EachDay from './EachDay.jsx';
 
-var Company = (props) => (
+const Company = ({ company }) => (
   <div className="flex-item">
-        <div className="company-title" >{props.company.company}</div>
-        <a data-tip="hello"> ◕‿‿◕   </a>
+    <div className="company-title">{company.company}</div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div className="company-details">
+      {company.currentDay.map(day => (
+        <div>
+          {day.currentPrice}
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
-        <ReactTooltip place="top" type="dark" effect="solid"/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+Company.propTypes = {
+  company: PropTypes.shape({
+    name: PropTypes.string,
+    group: PropTypes.number,
+    percentage: PropTypes.number,
+    currentDay: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+};
 
-        <div className="company-price">${props.company.currentDay.currentPrice}</div>
-      </div> 
-  );
-
-  export default Company;
-
-//   onClick={() => props.onClick(props.company)}>
-
-// var Company = (props) => (
-//   <div className="flex-item">
-//         <div className="company-title" >{props.company.company}</div>
-//         <div className="company-detail">{props.company.currentDay.currentPrice}</div>
-//       </div> 
-//   );
+export default Company;
