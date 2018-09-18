@@ -19,9 +19,12 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 app.get('/people-also-bought', (req, res) => {
-  Company.find({ group: 1 }).exec((err, results) => {
+  Company.find({ group: getRandomIntInclusive(1, 8) }).exec((err, results) => {
     if (err) {
       res.send(err);
     } else {

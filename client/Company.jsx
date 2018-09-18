@@ -1,23 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import EachDay from './EachDay.jsx';
+import Analyst from './Analyst.jsx';
 
 const Company = ({ company }) => (
   <div className="flex-item">
     <div className="company-title">{company.company}</div>
+    <div>
+      <Analyst
+        display={`${company.percentage}%`}
+        tooltip={`${company.percentage}% anaylsts agree that
+        ${company.company} is a buy.`}
+      />
+    </div>
     <br />
     <br />
     <br />
     <br />
     <br />
-    <br />
-    <div className="company-details">
+    <div>
       {company.currentDay.map(day => (
-        <div>
+        <div className="company-price">
           {day.currentPrice}
         </div>
       ))}
     </div>
+    <div className="differences">{`${company.diff}%`}</div>
   </div>
 );
 
