@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../public/stylesheet.css';
+import moment from 'moment';
 import CompanyList from './CompanyList.jsx';
 
 const axios = require('axios');
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCompanies: [],
       companies: [],
+      currentCompanies: [],
+      currentPrices: [],
+      currentPercentages: [],
       min: 1,
       max: 8,
       priceisUp: true,
@@ -34,6 +38,7 @@ class App extends React.Component {
           companies: res.data,
           currentCompanies: res.data.slice(0, 4),
         });
+        this.updateData();
       })
       .catch((err) => {
         console.log(err);
@@ -46,9 +51,51 @@ class App extends React.Component {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  updateData() {
+    const { currentCompanies } = this.state;
+    const appScroll = this;
+
+    function percentDiff(priceOne, priceTwo) {
+      return (((priceTwo - priceOne) / priceOne) * 100);
+    }
+
+    function theLoop(i) {
+      setTimeout(() => {
+        const time = moment();
+        const isOpen = moment('9:00', 'hh:mm');
+        const isClosed = moment('15:00', 'hh:mm');
+        const marketisOpen = (time.isBetween(isOpen, isClosed));
+
+        appScroll.setState({
+          currentPrices: [
+            currentCompanies[0].currentDay[i].currentPrice,
+            currentCompanies[1].currentDay[i].currentPrice,
+            currentCompanies[2].currentDay[i].currentPrice,
+            currentCompanies[3].currentDay[i].currentPrice,
+          ],
+          currentPercentages: [
+            percentDiff(currentCompanies[0].currentDay[0].currentPrice,
+              currentCompanies[0].currentDay[i].currentPrice).toFixed(2),
+            percentDiff(currentCompanies[1].currentDay[0].currentPrice,
+              currentCompanies[1].currentDay[i].currentPrice).toFixed(2),
+            percentDiff(currentCompanies[2].currentDay[0].currentPrice,
+              currentCompanies[2].currentDay[i].currentPrice).toFixed(2),
+            percentDiff(currentCompanies[3].currentDay[0].currentPrice,
+              currentCompanies[3].currentDay[i].currentPrice).toFixed(2),
+          ],
+          marketisOpen,
+        });
+        if (i++) {
+          theLoop(i);
+        }
+      }, 300);
+    }
+    theLoop(1);
+  }
+
+
   handleArrowClick(e) {
     const { showLeft, showRight, companies } = this.state;
-    // console.log(e);
     const arrow = e.target.getAttribute('name');
     if (!showLeft) {
       this.setState({
@@ -75,9 +122,11 @@ class App extends React.Component {
 
   render() {
     const {
-      priceisUp,
-      marketisOpen,
+      currentPercentages,
       currentCompanies,
+      currentPrices,
+      marketisOpen,
+      priceisUp,
       showRight,
       showLeft,
     } = this.state;
@@ -85,10 +134,12 @@ class App extends React.Component {
     return (
       <div>
         <h1>People Also Bought</h1>
-        <div>{marketisOpen}</div>
         <div>
           <CompanyList
             companies={currentCompanies}
+            currentPrices={currentPrices}
+            currentPercentages={currentPercentages}
+            marketisOpen={marketisOpen}
             price={priceisUp}
             showRight={showRight}
             showLeft={showLeft}

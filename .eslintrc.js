@@ -14,6 +14,8 @@ module.exports = {
   },
   rules: {
     "no-console": 0,
+    'no-plusplus': 'off',
+    "no-param-reassign": 0,
     "import/extensions": ["error", "never", { "jsx": "always" }],
     "jsx-a11y/anchor-is-valid": [ "error", {
       "components": [ "Link" ],

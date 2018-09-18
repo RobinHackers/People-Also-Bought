@@ -2,29 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Analyst from './Analyst.jsx';
 
-const Company = ({ company }) => (
+const Company = ({
+  currentPercentages,
+  company,
+  price,
+}) => (
   <div className="flex-item">
     <div className="company-title">{company.company}</div>
-    <div>
+    <div className="analyst">
       <Analyst
         display={`${company.percentage}%`}
         tooltip={`${company.percentage}% anaylsts agree that
         ${company.company} is a buy.`}
       />
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div>
-      {company.currentDay.map(day => (
-        <div className="company-price">
-          {day.currentPrice}
-        </div>
-      ))}
+    <div className="price">
+      {`$${price}`}
     </div>
-    <div className="differences">{`${company.diff}%`}</div>
+    <span className="differences">{currentPercentages}</span>
   </div>
 );
 
@@ -35,6 +30,8 @@ Company.propTypes = {
     percentage: PropTypes.number,
     currentDay: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
+  price: PropTypes.number.isRequired,
+  currentPercentages: PropTypes.number.isRequired,
 };
 
 export default Company;
