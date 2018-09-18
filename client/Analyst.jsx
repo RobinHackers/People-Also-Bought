@@ -1,8 +1,5 @@
 import React from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import './Tab.css';
 import PropTypes from 'prop-types';
-// import Icon from '../Misc/Icon.jsx';
 import ReactTooltip from 'react-tooltip';
 
 const Analyst = ({ tooltip, display }) => (
