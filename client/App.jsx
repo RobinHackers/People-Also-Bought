@@ -16,7 +16,7 @@ class App extends React.Component {
       currentPercentages: [14.23, 18.23, 45.23, 38.12],
       min: 1,
       max: 8,
-      marketisOpen: false,
+      marketisOpen: true,
       showRight: true,
       showLeft: false,
     };
