@@ -25,7 +25,7 @@ const model = {
     get: (company, cb) => {
       Company.find({ company }, (err1, data) => {
         if (err1) { return cb(err1); }
-        cb(null, data);
+        return cb(null, data);
       });
     },
     post: (body, cb) => {
@@ -33,21 +33,21 @@ const model = {
         if (err) { return cb(err); }
         if (!data) { return addToDb(new Company(body), cb); }
         if (data) { console.log('ALREADY THERE'); }
-        cb();
+        return cb();
       });
     },
     put: (body, cb) => {
       Company.findOneAndUpdate({ company: body.company }, body, (err, data) => {
         if (err) { return cb(err); }
         if (!data) { return addToDb(new Company(body), cb); }
-        cb();
+        return cb();
       });
     },
     delete: (company, cb) => {
       Company.findOneAndDelete({ company }, (err, data) => {
         if (err) { return cb(err); }
         if (!data) { console.log('DATA NOT FOUND'); }
-        cb();
+        return cb();
       });
     },
   },

@@ -1,12 +1,6 @@
 const express = require('express');
 const parser = require('body-parser');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
-require('dotenv').config();
-
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/people-also-bought', { useNewUrlParser: true }, (err) => {
-  console.log(err || 'MongoDB connected');
-});
 
 const app = express();
 const router = require('./routes');
