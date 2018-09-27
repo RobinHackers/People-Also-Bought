@@ -1,0 +1,1 @@
+const seed = require('./mainSeed'); console.time('seedE'); seed(384616 * 4, 'E'); console.timeEnd('seedE');

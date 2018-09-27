@@ -1,0 +1,1 @@
+const seed = require('./mainSeed'); console.time('seedZ'); seed(384616 * 25, 'Z'); console.timeEnd('seedZ');

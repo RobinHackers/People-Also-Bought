@@ -1,0 +1,26 @@
+node dataGeneration/seedA.js &
+node dataGeneration/seedB.js &
+node dataGeneration/seedC.js &
+node dataGeneration/seedD.js &
+node dataGeneration/seedE.js &
+node dataGeneration/seedF.js &
+node dataGeneration/seedG.js &
+node dataGeneration/seedH.js &
+node dataGeneration/seedI.js &
+node dataGeneration/seedJ.js &
+node dataGeneration/seedK.js &
+node dataGeneration/seedL.js &
+node dataGeneration/seedM.js &
+node dataGeneration/seedN.js &
+node dataGeneration/seedO.js &
+node dataGeneration/seedP.js &
+node dataGeneration/seedQ.js &
+node dataGeneration/seedR.js &
+node dataGeneration/seedS.js &
+node dataGeneration/seedT.js &
+node dataGeneration/seedU.js &
+node dataGeneration/seedV.js &
+node dataGeneration/seedW.js &
+node dataGeneration/seedX.js &
+node dataGeneration/seedY.js &
+node dataGeneration/seedZ.js
