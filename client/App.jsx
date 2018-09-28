@@ -34,6 +34,7 @@ class App extends React.Component {
 
     axios.get(`/api/people-also-bought${location.pathname}`)
       .then((res) => {
+        console.log(res.data)
         const percentDiff = (priceOne, priceTwo) => (((priceTwo - priceOne) / priceOne) * 100);
         this.setState({
           companies: res.data,

@@ -1,0 +1,218 @@
+[
+  {
+    "_id": 1,
+    "company": "Hack Reactor",
+    "companyAbbr": "HRSF",
+    "percentage": 68,
+    "group": 1,
+    "currentDay": [
+      {
+        "currentPrice": 454.91
+      },
+      {
+        "currentPrice": 74.14
+      },
+      {
+        "currentPrice": 288.68
+      },
+      {
+        "currentPrice": 215.98
+      },
+      {
+        "currentPrice": 253.99
+      },
+      {
+        "currentPrice": 486.95
+      },
+      {
+        "currentPrice": 475.66
+      },
+      {
+        "currentPrice": 241.37
+      },
+      {
+        "currentPrice": 54.54
+      },
+      {
+        "currentPrice": 464.39
+      },
+      {
+        "currentPrice": 124.4
+      },
+      {
+        "currentPrice": 308.97
+      },
+      {
+        "currentPrice": 259.59
+      },
+      {
+        "currentTime": "08:10am",
+        "currentPrice": 400.76
+      },
+      {
+        "currentTime": "08:20am",
+        "currentPrice": 261.26
+      },
+      {
+        "currentTime": "08:30am",
+        "currentPrice": 485.25
+      },
+      {
+        "currentTime": "08:40am",
+        "currentPrice": 254.07
+      },
+      {
+        "currentTime": "08:50am",
+        "currentPrice": 254.28
+      },
+      {
+        "currentTime": "09:00am",
+        "currentPrice": 151.82
+      },
+      {
+        "currentTime": "09:10am",
+        "currentPrice": 521.39
+      },
+      {
+        "currentTime": "09:20am",
+        "currentPrice": 361.27
+      },
+      {
+        "currentTime": "09:30am",
+        "currentPrice": 309.42
+      },
+      {
+        "currentTime": "09:40am",
+        "currentPrice": 497.12
+      },
+      {
+        "currentTime": "09:50am",
+        "currentPrice": 67.55
+      },
+      {
+        "currentTime": "10:00am",
+        "currentPrice": 503.27
+      },
+      {
+        "currentTime": "10:10am",
+        "currentPrice": 392.51
+      },
+      {
+        "currentTime": "10:20am",
+        "currentPrice": 400.49
+      },
+      {
+        "currentTime": "10:30am",
+        "currentPrice": 169.1
+      },
+      {
+        "currentTime": "10:40am",
+        "currentPrice": 107.82
+      },
+      {
+        "currentTime": "10:50am",
+        "currentPrice": 168.84
+      },
+      {
+        "currentTime": "11:00am",
+        "currentPrice": 397.15
+      },
+      {
+        "currentTime": "11:10am",
+        "currentPrice": 335.14
+      },
+      {
+        "currentTime": "11:20am",
+        "currentPrice": 444.21
+      },
+      {
+        "currentTime": "11:30am",
+        "currentPrice": 500.4
+      },
+      {
+        "currentTime": "11:40am",
+        "currentPrice": 163.44
+      },
+      {
+        "currentTime": "11:50am",
+        "currentPrice": 339.3
+      },
+      {
+        "currentTime": "00:00pm",
+        "currentPrice": 340.59
+      },
+      {
+        "currentTime": "00:10pm",
+        "currentPrice": 140.11
+      },
+      {
+        "currentTime": "00:20pm",
+        "currentPrice": 135.7
+      },
+      {
+        "currentTime": "00:30pm",
+        "currentPrice": 307.86
+      },
+      {
+        "currentTime": "00:40pm",
+        "currentPrice": 245.82
+      },
+      {
+        "currentTime": "00:50pm",
+        "currentPrice": 209.95
+      },
+      {
+        "currentTime": "01:00pm",
+        "currentPrice": 142.6
+      },
+      {
+        "currentTime": "01:10pm",
+        "currentPrice": 347.64
+      },
+      {
+        "currentTime": "01:20pm",
+        "currentPrice": 254.8
+      },
+      {
+        "currentTime": "01:30pm",
+        "currentPrice": 129.17
+      },
+      {
+        "currentTime": "01:40pm",
+        "currentPrice": 241.95
+      },
+      {
+        "currentTime": "01:50pm",
+        "currentPrice": 160.78
+      },
+      {
+        "currentTime": "02:00pm",
+        "currentPrice": 216.69
+      },
+      {
+        "currentTime": "02:10pm",
+        "currentPrice": 282.84
+      },
+      {
+        "currentTime": "02:20pm",
+        "currentPrice": 133.91
+      },
+      {
+        "currentTime": "02:30pm",
+        "currentPrice": 508.97
+      },
+      {
+        "currentTime": "02:40pm",
+        "currentPrice": 359.38
+      },
+      {
+        "currentTime": "02:50pm",
+        "currentPrice": 202.74
+      },
+      {
+        "currentTime": "03:00pm",
+        "currentPrice": 457.11
+      }
+    ]
+  }
+]
