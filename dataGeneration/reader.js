@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-const filePath = './seeds/companies_0.json';
+const filePath = './seeds/companies_9615400.json';
 
 fs.readFile(filePath, (err, data) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(JSON.parse(data).length);
+    console.log(JSON.parse(data)[0]);
   }
 });
 

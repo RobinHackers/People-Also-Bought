@@ -14,9 +14,10 @@ const createSeeds = (data) => {
     alsoBought.push(generateRandomInt(10000000));
   }
   todaysPrice.push({ currentPrice: generateRandomDollars(1000, 1) });
-  const { currentPrice } = todaysPrice[0];
+  let { currentPrice } = todaysPrice[0];
   for (let i = 1; i < 24; i++) {
-    todaysPrice.push({ currentPrice: currentPrice * (1 + Math.random() / 32) });
+    currentPrice *= (1 + Math.random() / 32);
+    todaysPrice.push({ currentPrice: currentPrice.toFixed(2) });
   }
   data.map((item) => {
     const company = item.companyAbbr.slice(-2).split('').map(char => cache[char][generateRandomInt(cache[char].length)]).join(' ');
