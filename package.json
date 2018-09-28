@@ -7,7 +7,11 @@
     "test": "jest",
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
-    "dev": "npm run build & npm run start"
+    "dev": "npm run build & npm run start",
+    "scripts": "node ./dataGeneration/generateScripts.js",
+    "seeds": "./dataGeneration/generate.sh",
+    "clear": "node ./dataGeneration/clearSeeds.js",
+    "read": "node ./dataGeneration/reader.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "^0.1.3",
+    "async": "^2.6.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
