@@ -8,7 +8,10 @@
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
     "dev": "npm run build & npm run start",
-    "seed": "./dataGeneration/generate.sh"
+    "scripts": "node ./dataGeneration/generateScripts.js",
+    "seeds": "./dataGeneration/generate.sh",
+    "clear": "node ./dataGeneration/clearSeeds.js",
+    "read": "node ./dataGeneration/reader.js"
   },
   "repository": {
     "type": "git",

@@ -1,1 +1,0 @@
-const seed = require('./mainSeed'); console.time('seedH'); seed(384616 * 7, 'H'); console.timeEnd('seedH');

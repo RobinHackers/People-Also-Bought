@@ -1,1 +1,0 @@
-const seed = require('./mainSeed'); console.time('seedD'); seed(384616 * 3, 'D'); console.timeEnd('seedD');

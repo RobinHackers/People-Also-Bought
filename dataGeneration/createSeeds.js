@@ -2,29 +2,41 @@ const fs = require('fs');
 const cache = require('./cacheNames');
 
 const generateRandomInt = (max, min = 0) => min + Math.floor(Math.random() * Math.floor(max - min));
+const generateRandomDollars = (max, min = 0) => (
+  (min + (Math.random() * Math.floor(max - min))).toFixed(2)
+);
 
 const createSeeds = (data) => {
+  const page = data[0].id;
   const alsoBought = [];
+  const todaysPrice = [];
   for (let i = 0; i < 12; i++) {
     alsoBought.push(generateRandomInt(10000000));
   }
+  todaysPrice.push({ currentPrice: generateRandomDollars(1000, 1) });
+  const { currentPrice } = todaysPrice[0];
+  for (let i = 1; i < 24; i++) {
+    todaysPrice.push({ currentPrice: currentPrice * (1 + Math.random() / 32) });
+  }
   data.map((item) => {
     const company = item.companyAbbr.slice(-2).split('').map(char => cache[char][generateRandomInt(cache[char].length)]).join(' ');
-    return {
-      id: item.id,
-      companyAbbr: item.companyAbbr,
+    return Object.assign(item, {
       company,
       percentage: generateRandomInt(100),
       alsoBought,
-    };
+      currentDay: todaysPrice,
+    });
   });
-  for (let i = 0; i < 1024; i++) {
-    let chunk = data.slice(376 * i, 376 * (i + 1));
+  const size = data.length;
+  const chunks = 256;
+  const chunkSize = Math.ceil(size / chunks);
+  for (let i = 0; i < chunks; i++) {
+    let chunk = data.slice(chunkSize * i, chunkSize * (i + 1));
     if (chunk.length > 0) {
       chunk = JSON.stringify(chunk);
-      if (i !== 0) { chunk.slice(1); }
-      if (chunk.length !== 376) { chunk.slice(-1); }
-      fs.appendFile(`./seeds/companies${chunk[0].companyAbbr[0]}.json`, chunk, (err) => {
+      if (JSON.parse(chunk).length === chunkSize) { chunk = chunk.replace(/]$/, ','); }
+      if (i !== 0) { chunk = chunk.slice(1); }
+      fs.appendFile(`./seeds/companies_${page}.json`, chunk, (err) => {
         if (err) { console.log(err); }
       });
     }
@@ -32,19 +44,3 @@ const createSeeds = (data) => {
 };
 
 module.exports = createSeeds;
-
-// const writeFile = (x) => {
-//   // let chunk = results.slice(375 * x, 375 * (x + 1));
-//   let chunk = results.slice(2 * x, 2 * (x + 1));
-//   console.log(chunk)
-//   if (chunk.length > 0) {
-//     chunk = JSON.stringify(chunk);
-//     if (x !== 0) { chunk.slice(1); }
-//     if (chunk[375 * (x + 1)]) { chunk.slice(-1); }
-//     fs.appendFile(`./seeds/companies${current}.json`, chunk, (err) => {
-//       if (err) { return console.log(err); }
-//       writeFile(x);
-//     });
-//   }
-// };
-// writeFile(0);

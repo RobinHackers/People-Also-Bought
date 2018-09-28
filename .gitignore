@@ -26,4 +26,5 @@ public/bundle.js
 
 # Generated Seeds
 seeds/
+dataGeneration/seed*.js
 
