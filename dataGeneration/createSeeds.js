@@ -16,7 +16,7 @@ const createSeeds = (data) => {
   todaysPrice.push({ currentPrice: generateRandomDollars(1000, 1) });
   let { currentPrice } = todaysPrice[0];
   for (let i = 1; i < 24; i++) {
-    currentPrice *= (1 + Math.random() / 32);
+    currentPrice *= (0.984375 + Math.random() / 32);
     todaysPrice.push({ currentPrice: currentPrice.toFixed(2) });
   }
   data.map((item) => {

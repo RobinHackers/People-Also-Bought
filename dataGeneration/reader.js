@@ -6,7 +6,7 @@ fs.readFile(filePath, (err, data) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(JSON.parse(data)[0]);
+    console.log(JSON.parse(data)[384600]);
   }
 });
 
