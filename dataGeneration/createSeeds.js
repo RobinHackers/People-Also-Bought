@@ -23,14 +23,14 @@ const createSeeds = (data) => {
     const company = item.companyAbbr.slice(-2).split('').map(char => cache[char][generateRandomInt(cache[char].length)]).join(' ');
     return Object.assign(item, {
       company,
-      percentage: generateRandomInt(100),
+      percentage: generateRandomInt(65, 10),
       alsoBought,
       currentDay: todaysPrice,
     });
   });
-  const size = data.length;
+  const dataSize = data.length;
   const chunks = 256;
-  const chunkSize = Math.ceil(size / chunks);
+  const chunkSize = Math.ceil(dataSize / chunks);
   for (let i = 0; i < chunks; i++) {
     let chunk = data.slice(chunkSize * i, chunkSize * (i + 1));
     if (chunk.length > 0) {
