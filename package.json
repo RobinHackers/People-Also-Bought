@@ -8,10 +8,9 @@
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
     "dev": "npm run build & npm run start",
-    "scripts": "node ./dataGeneration/generateScripts.js",
-    "seeds": "./dataGeneration/generate.sh",
-    "clear": "node ./dataGeneration/clearSeeds.js",
-    "read": "node ./dataGeneration/reader.js"
+    "scripts": "node ./dataGeneration/generateScripts.js && node ./database/generateImports.js",
+    "seed": "./dataGeneration/generate.sh && ./database/import.sh",
+    "clear": "node ./dataGeneration/clearSeeds.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +35,7 @@
     "faker": "^4.1.0",
     "i": "^0.3.6",
     "jquery": "^3.3.1",
+    "json2csv": "^4.2.1",
     "moment": "^2.22.2",
     "mongoose": "^5.2.13",
     "morgan": "^1.9.0",

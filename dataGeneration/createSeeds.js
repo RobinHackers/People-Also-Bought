@@ -1,4 +1,5 @@
 const fs = require('fs');
+const json2csv = require('json2csv').parse;
 const cache = require('./cacheNames');
 
 const generateRandomInt = (max, min = 0) => min + Math.floor(Math.random() * Math.floor(max - min));
@@ -6,42 +7,50 @@ const generateRandomDollars = (max, min = 0) => (
   (min + (Math.random() * Math.floor(max - min))).toFixed(2)
 );
 
+const write = (data, page, file, chunks) => {
+  const size = data.length;
+  const chunkSize = Math.ceil(size / chunks);
+  const chunking = (i = 0) => {
+    const chunk = data.slice(chunkSize * i, chunkSize * (i + 1));
+    if (chunk.length > 0) {
+      const csv = i !== 0
+        ? `${json2csv(chunk, { header: false })}\n`
+        : `${json2csv(chunk)}\n`;
+      fs.appendFile(`./seeds/${file}_${page}.csv`, csv, (err) => {
+        if (err) { console.log(err); }
+        chunking(i + 1);
+      });
+    }
+  };
+  chunking();
+};
+
 const createSeeds = (data) => {
   const page = data[0].id;
   const alsoBought = [];
-  const todaysPrice = [];
-  for (let i = 0; i < 12; i++) {
-    alsoBought.push(generateRandomInt(10000000));
-  }
-  todaysPrice.push({ currentPrice: generateRandomDollars(1000, 1) });
-  let { currentPrice } = todaysPrice[0];
-  for (let i = 1; i < 24; i++) {
-    currentPrice *= (0.984375 + Math.random() / 32);
-    todaysPrice.push({ currentPrice: currentPrice.toFixed(2) });
-  }
   data.map((item) => {
+    for (let i = 0; i < 12; i++) {
+      alsoBought.push({
+        companyId: item.id,
+        alsoboughtId: generateRandomInt(10000000),
+      });
+    }
+    const todaysPrice = [];
+    todaysPrice.push({ currentPrice: generateRandomDollars(1000, 1) });
+    let { currentPrice } = todaysPrice[0];
+    for (let i = 1; i < 24; i++) {
+      currentPrice *= (0.984375 + Math.random() / 32);
+      todaysPrice.push({ currentPrice: currentPrice.toFixed(2) });
+    }
     const company = item.companyAbbr.slice(-2).split('').map(char => cache[char][generateRandomInt(cache[char].length)]).join(' ');
     return Object.assign(item, {
       company,
-      percentage: generateRandomInt(65, 10),
-      alsoBought,
+      percentage: generateRandomInt(60, 10),
       currentDay: todaysPrice,
     });
   });
-  const dataSize = data.length;
-  const chunks = 256;
-  const chunkSize = Math.ceil(dataSize / chunks);
-  for (let i = 0; i < chunks; i++) {
-    let chunk = data.slice(chunkSize * i, chunkSize * (i + 1));
-    if (chunk.length > 0) {
-      chunk = JSON.stringify(chunk);
-      if (JSON.parse(chunk).length === chunkSize) { chunk = chunk.replace(/]$/, ','); }
-      if (i !== 0) { chunk = chunk.slice(1); }
-      fs.appendFile(`./seeds/companies_${page}.json`, chunk, (err) => {
-        if (err) { console.log(err); }
-      });
-    }
-  }
+  write(data, page, 'companies', 1024);
+  write(alsoBought, page, 'alsobought', 8192);
 };
 
 module.exports = createSeeds;
