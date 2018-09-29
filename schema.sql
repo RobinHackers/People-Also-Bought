@@ -1,5 +1,5 @@
-DROP TABLE alsobought;
 DROP TABLE companies;
+DROP TABLE alsobought;
 
 CREATE TABLE companies (
   id INT NOT NULL,
