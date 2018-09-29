@@ -1,5 +1,11 @@
-DROP TABLE companies;
-DROP TABLE alsobought;
+-- DROP DATABASE IF EXISTS robinhood;
+
+-- CREATE DATABASE robinhood;
+
+-- USE robinhood;
+
+DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS alsobought;
 
 CREATE TABLE companies (
   id INT NOT NULL,

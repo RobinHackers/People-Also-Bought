@@ -9,7 +9,8 @@
     "build": "webpack -d --watch",
     "dev": "npm run build & npm run start",
     "scripts": "node ./dataGeneration/generateScripts.js && node ./database/generateImports.js",
-    "seed": "./dataGeneration/generate.sh && ./database/import.sh",
+    "import": "./dataGeneration/generate.sh && ./database/import.sh",
+    "seed": "npm run scripts && npm run import",
     "clear": "node ./dataGeneration/clearSeeds.js"
   },
   "repository": {

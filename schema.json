@@ -1,0 +1,10 @@
+{
+  "companyAbbr": {
+    "id": {
+      "alsobought": ["companyAbbr"]
+    },
+    "company": "",
+    "percentage": "",
+    "currentDay": ""
+  }
+}
