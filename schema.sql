@@ -1,9 +1,3 @@
--- DROP DATABASE IF EXISTS robinhood;
-
--- CREATE DATABASE robinhood;
-
--- USE robinhood;
-
 DROP TABLE IF EXISTS companies;
 DROP TABLE IF EXISTS alsobought;
 
@@ -20,3 +14,8 @@ CREATE TABLE alsobought (
   company_id INT NOT NULL,
   alsobought_id INT NOT NULL
 );
+
+-- select * from companies, alsobought
+-- where alsobought.company_id = (
+-- 	select id from companies where company_abbr = 'AAAAA'
+-- )
