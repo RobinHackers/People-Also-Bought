@@ -1,3 +1,7 @@
-CREATE INDEX id ON companies (id);
-CREATE INDEX abbr ON companies (company_abbr);
-CREATE INDEX comp_id ON alsobought (company_id);
+-- DROP INDEX IF EXISTS id;
+-- DROP INDEX IF EXISTS abbr;
+-- DROP INDEX IF EXISTS comp_id;
+
+CREATE INDEX IF NOT EXISTS id ON companies USING HASH (id);
+CREATE INDEX IF NOT EXISTS abbr ON companies USING HASH (company_abbr);
+CREATE INDEX IF NOT EXISTS comp_id ON alsobought (company_id);
