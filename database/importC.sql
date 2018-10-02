@@ -15,11 +15,11 @@ COPY robinhood.alsobought FROM './seeds/alsobought_384616.csv' WITH HEADER = TRU
 COPY robinhood.alsobought FROM './seeds/alsobought_769232.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_1153848.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_1538464.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
-COPY robinhood.alsobought FROM './seeds/alsobought_1923080.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_2307696.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
+COPY robinhood.alsobought FROM './seeds/alsobought_1923080.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_2692312.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
-COPY robinhood.alsobought FROM './seeds/alsobought_3461544.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_3076928.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
+COPY robinhood.alsobought FROM './seeds/alsobought_3461544.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_3846160.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_4230776.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';
 COPY robinhood.alsobought FROM './seeds/alsobought_4615392.csv' WITH HEADER = TRUE AND QUOTE = '`' AND DELIMITER = '|';

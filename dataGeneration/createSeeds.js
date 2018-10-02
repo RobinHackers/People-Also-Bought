@@ -29,24 +29,24 @@ const createSeeds = (data) => {
   const page = data[0].id;
   const alsoBought = [];
   data.map((item) => {
-    // FOR POSTGRES DATA GENERATION
-    for (let i = 0; i < 12; i++) {
-      alsoBought.push({
-        companyId: item.id,
-        alsoboughtId: generateRandomInt(10000000),
-      });
-    }
-    // END FOR POSTGRES DATA GENERATION
-    // // FOR CASSANDRA DATA GENERATION
-    // const alsoBoughtIds = [];
+    // // FOR POSTGRES DATA GENERATION
     // for (let i = 0; i < 12; i++) {
-    //   alsoBoughtIds.push(generateRandomInt(10000000));
+    //   alsoBought.push({
+    //     companyId: item.id,
+    //     alsoboughtId: generateRandomInt(10000000),
+    //   });
     // }
-    // alsoBought.push({
-    //   companyAbbr: item.companyAbbr,
-    //   alsobought: alsoBoughtIds,
-    // });
-    // // END FOR CASSANDRA DATA GENERATION
+    // // END FOR POSTGRES DATA GENERATION
+    // FOR CASSANDRA DATA GENERATION
+    const alsoBoughtIds = [];
+    for (let i = 0; i < 12; i++) {
+      alsoBoughtIds.push(generateRandomInt(10000000));
+    }
+    alsoBought.push({
+      companyAbbr: item.companyAbbr,
+      alsobought: alsoBoughtIds,
+    });
+    // END FOR CASSANDRA DATA GENERATION
     const todaysPrice = [];
     todaysPrice.push({ currentPrice: generateRandomDollars(1000, 1) });
     let { currentPrice } = todaysPrice[0];
