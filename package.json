@@ -11,7 +11,7 @@
     "scripts": "node ./dataGeneration/generateScripts.js && node ./database/generateImportPG.js && node ./database/generateImportC.js",
     "gen": "node ./dataGeneration/clearSeeds.js && ./dataGeneration/generate.sh",
     "importPG": "./database/import.sh",
-    "importC": "cqlsh < schemaC.sql && cqlsh < ./database/importC.sql",
+    "importC": "cqlsh < schemaC.sql && cqlsh < ./database/importC.sql && node ./database/indexC.js && node ./timer.js",
     "seedPG": "npm run scripts && npm run gen && npm run importPG",
     "seedC": "npm run scripts && npm run gen && npm run importC"
   },

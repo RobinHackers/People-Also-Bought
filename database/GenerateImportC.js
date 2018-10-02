@@ -3,7 +3,7 @@ const fs = require('fs');
 const filepath = './database/importC.sql';
 
 const append = (i, path) => {
-  const data = `COPY robinhood.${path} FROM './seeds/${path}_${384616 * i}.csv' WITH HEADER = TRUE AND QUOTE = '\`';\n`;
+  const data = `COPY robinhood.${path} FROM './seeds/${path}_${384616 * i}.csv' WITH HEADER = TRUE AND QUOTE = '\`' AND DELIMITER = '|';\n`;
   fs.appendFile(filepath, data, (error) => {
     if (error) { console.log(error); }
   });
