@@ -1,6 +1,6 @@
 const fs = require('fs');
 const json2csv = require('json2csv').parse;
-const cache = require('./cacheNames');
+const names = require('./createNames');
 
 const generateRandomInt = (max, min = 0) => min + Math.floor(Math.random() * Math.floor(max - min));
 const generateRandomDollars = (max, min = 0) => (
@@ -44,7 +44,7 @@ const createSeeds = (data) => {
       });
     }
     // Generate company information
-    const company = item.companyAbbr.slice(-2).split('').map(char => cache[char][generateRandomInt(cache[char].length)]).join(' ');
+    const company = item.companyAbbr.slice(-2).split('').map(char => names[char][generateRandomInt(names[char].length)]).join(' ');
     return Object.assign(item, {
       company,
       percentage: generateRandomInt(80, 10),

@@ -1,19 +1,16 @@
 const { Pool, Client } = require('pg');
 
-// const pool = new Pool({
-//   user: 'eddielo',
-//   host: 'localhost',
-//   database: 'alsoBought',
-// });
-
-const client = new Client({
-  user: 'eddielo',
-  host: 'localhost',
+const pool = new Pool({
   database: 'robinhood',
 });
 
-const query1 = 'GHFDD';
-const query2 = 'FDGFD';
+const client = new Client({
+  database: 'robinhood',
+});
+
+module.exports = { pool, client };
+
+const query1 = 'AAAAA';
 
 client.connect();
 console.time('query1');
@@ -22,21 +19,22 @@ client.query(`select companies.*, prices.current_price from companies, alsobough
                 select id from companies where company_abbr = '${query1}'
               ) and companies.id = alsobought.alsobought_id
               and companies.id = prices.company_id;`)
-  .then(() => console.timeEnd('query1'))
-  .catch(e => console.error(e.stack));
-
-console.time('query2');
-client.query(`select companies.* from companies, alsobought 
-              where alsobought.company_id = (
-                select id from companies where company_abbr = '${query2}'
-              ) and companies.id = alsobought.alsobought_id;`)
-  .then((res) => {
-    const ids = [];
-    res.rows.forEach(row => ids.push(row.id));
-    client.query(`select * from prices
-                  where company_id in (${ids.join(',')});`)
-      .then(() => console.timeEnd('query2'))
-      .then(() => client.end())
-      .catch(e => console.error(e.stack));
+  .then(({ rows }) => {
+    const numOfPricePerEntry = rows.length / 12;
+    const companies = rows
+      .filter((_company, idx) => idx % numOfPricePerEntry === 0)
+      .map(company => ({
+        id: company.id,
+        companyAbbr: company.company_abbr,
+        company: company.company,
+        percentage: company.percentage,
+      }));
+    const currentDay = rows.map(company => ({ currentPrice: company.current_price }));
+    for (let i = 0; i < 12; i += 1) {
+      companies[i].currentDay = currentDay
+        .slice(numOfPricePerEntry * i, numOfPricePerEntry * (i + 1));
+    }
+    client.end();
   })
+  .then(() => console.timeEnd('query1'))
   .catch(e => console.error(e.stack));
