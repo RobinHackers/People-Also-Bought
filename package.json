@@ -8,12 +8,10 @@
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
     "dev": "npm run build & npm run start",
-    "scripts": "node ./dataGeneration/generateScripts.js && node ./database/generateImportPG.js && node ./database/generateImportC.js",
+    "scripts": "node ./dataGeneration/generateScripts.js && node ./database/generateImport.js",
     "gen": "node ./dataGeneration/clearSeeds.js && ./dataGeneration/generate.sh",
-    "importPG": "./database/import.sh",
-    "importC": "cqlsh < schemaC.sql && cqlsh < ./database/importC.sql && node ./database/indexC.js && node ./timer.js",
-    "seedPG": "npm run scripts && npm run gen && npm run importPG",
-    "seedC": "npm run scripts && npm run gen && npm run importC"
+    "import": "./database/import.sh",
+    "seed": "npm run scripts && npm run gen && npm run import"
   },
   "repository": {
     "type": "git",
@@ -34,7 +32,6 @@
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
-    "cassandra-driver": "^3.5.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "faker": "^4.1.0",
@@ -48,7 +45,6 @@
     "npm": "^6.4.1",
     "path": "^0.12.7",
     "pg": "^7.4.3",
-    "pg-promise": "^8.4.6",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

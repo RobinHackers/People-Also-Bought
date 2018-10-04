@@ -1,4 +1,4 @@
-node ./timer.js && (
+(
   node ./dataGeneration/seed_0.js &
   node ./dataGeneration/seed_1.js &
   node ./dataGeneration/seed_2.js
@@ -33,5 +33,4 @@ node ./timer.js && (
 ) && (
   node ./dataGeneration/seed_24.js &
   node ./dataGeneration/seed_25.js
-) &&
-node ./timer.js
+)
