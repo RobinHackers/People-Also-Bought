@@ -23,18 +23,18 @@ const write = (data, page, file, chunks, i = 0) => {
 };
 
 const createSeeds = (data) => {
-  const page = data[0].id;
+  const page = data[0].id / 384616;
   const todaysPrice = [];
   const alsoBought = [];
   data.map((item) => {
-    // Generate alsobought join table
+    // Generate alsobought join information
     for (let i = 0; i < 12; i++) {
       alsoBought.push({
         companyId: item.id,
         alsoboughtId: generateRandomInt(10000000),
       });
     }
-    // Generate prices table
+    // Generate prices
     let currentPrice = generateRandomDollars(1000, 1);
     for (let i = 0; i < 24; i++) {
       currentPrice *= (0.984375 + Math.random() / 32);
@@ -43,7 +43,7 @@ const createSeeds = (data) => {
         currentPrice: currentPrice.toFixed(2),
       });
     }
-    // Generate company information table
+    // Generate company information
     const company = item.companyAbbr.slice(-2).split('').map(char => cache[char][generateRandomInt(cache[char].length)]).join(' ');
     return Object.assign(item, {
       company,

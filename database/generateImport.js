@@ -1,9 +1,9 @@
 const fs = require('fs');
 
-const filepath = './database/importPG.sql';
+const filepath = './database/import.sql';
 
 const append = (i, path) => {
-  const data = `\\COPY ${path} FROM './seeds/${path}_${384616 * i}.csv' WITH QUOTE AS '\`' DELIMITER AS '|' CSV HEADER;\n`;
+  const data = `\\COPY ${path} FROM './seeds/${path}_${i}.csv' WITH QUOTE AS '\`' DELIMITER AS '|' CSV HEADER;\n`;
   fs.appendFile(filepath, data, (error) => {
     if (error) { console.log(error); }
   });
