@@ -24,8 +24,7 @@ fs.writeFile(filepath, header, (e) => {
   if (e) { console.log(e); }
   for (let i = 0; i < 26; i++) {
     append(i, 'companies');
-  }
-  for (let i = 0; i < 26; i++) {
     append(i, 'alsobought');
+    append(i, 'prices');
   }
 });
