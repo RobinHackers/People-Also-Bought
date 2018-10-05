@@ -14,7 +14,7 @@ const model = {
             percentage: company.percentage,
           }));
         const prices = data.map(company => ({
-          currentPrice: Number(company.current_price.slice(1)),
+          currentPrice: company.current_price.slice(1),
         }));
         for (let i = 0; i < 12; i += 1) {
           companies[i].currentDay = prices
@@ -25,16 +25,34 @@ const model = {
       .catch(error => console.log(error)),
   },
   company: {
-    get: (companyAbbreviation, cb) => {
+    get: companyAbbreviation => queries.getCompanyByAbbreviation(companyAbbreviation)
+      .then((data) => {
+        const company = data[0];
+        const alsoBought = data
+          .filter((_company, idx) => idx % (data.length / 12) === 0)
+          .map(entry => entry.alsobought_id);
+        const currentDay = data
+          .filter((_company, idx) => idx % 12 === 0)
+          .map(entry => ({
+            currentPrice: entry.current_price.slice(1),
+          }));
+        return Object.assign(company, { alsoBought }, { currentDay });
+      }),
+    post: body => queries.insertCompany(body)
+      .then(() => queries.getCurrentId())
+      .then((id) => {
+        const insert = [
+          queries.insertAlsoBought(id, body.alsoBought),
+          queries.insertPrices(id, body.currentDay),
+        ];
+        return Promise.all(insert);
+      }),
+    put: (body) => {
     },
-    post: (body, cb) => {
-    },
-    put: (body, cb) => {
-    },
-    delete: (companyAbbreviation, cb) => {
+    delete: (companyAbbreviation) => {
     },
     prices: {
-      post: (body, cb) => {
+      post: (body) => {
       },
     },
   },

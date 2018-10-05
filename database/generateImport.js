@@ -2,8 +2,8 @@ const fs = require('fs');
 
 const filepath = './database/import.sql';
 
-const append = (i, path) => {
-  const data = `\\COPY ${path} FROM './seeds/${path}_${i}.csv' WITH QUOTE AS '\`' DELIMITER AS '|' CSV HEADER;\n`;
+const append = (i, table, header) => {
+  const data = `\\COPY ${table} (${header}) FROM './seeds/${table}_${i}.csv' WITH QUOTE AS '\`' DELIMITER AS '|' CSV HEADER;\n`;
   fs.appendFile(filepath, data, (error) => {
     if (error) { console.log(error); }
   });
@@ -23,8 +23,8 @@ const header = `
 fs.writeFile(filepath, header, (e) => {
   if (e) { console.log(e); }
   for (let i = 0; i < 26; i++) {
-    append(i, 'companies');
-    append(i, 'alsobought');
-    append(i, 'prices');
+    append(i, 'companies', 'company_abbr, company, percentage');
+    append(i, 'alsobought', 'company_id, alsobought_id');
+    append(i, 'prices', 'company_id, current_price');
   }
 });

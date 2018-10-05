@@ -26,12 +26,12 @@ const createSeeds = (data) => {
   const page = data[0].id / 384616;
   const todaysPrice = [];
   const alsoBought = [];
-  data.map((item) => {
+  data = data.map((item) => {
     // Generate alsobought join information
     for (let i = 0; i < 12; i++) {
       alsoBought.push({
         companyId: item.id,
-        alsoboughtId: generateRandomInt(10000000),
+        alsoboughtId: generateRandomInt(10000016, 1),
       });
     }
     // Generate prices
@@ -45,10 +45,11 @@ const createSeeds = (data) => {
     }
     // Generate company information
     const company = item.companyAbbr.slice(-2).split('').map(char => names[char][generateRandomInt(names[char].length)]).join(' ');
-    return Object.assign(item, {
+    return {
+      companyAbbr: item.companyAbbr,
       company,
       percentage: generateRandomInt(80, 10),
-    });
+    };
   });
   write(data, page, 'companies', 1024);
   write(alsoBought, page, 'alsobought', 8192);
