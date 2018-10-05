@@ -39,11 +39,10 @@ const model = {
         return Object.assign(company, { alsoBought }, { currentDay });
       }),
     post: body => queries.insertCompany(body)
-      .then(() => queries.getCurrentId())
-      .then((id) => {
+      .then((data) => {
         const insert = [
-          queries.insertAlsoBought(id, body.alsoBought),
-          queries.insertPrices(id, body.currentDay),
+          queries.insertAlsoBought(data[0].id, body.alsoBought),
+          queries.insertPrices(data[0].id, body.currentDay),
         ];
         return Promise.all(insert);
       }),

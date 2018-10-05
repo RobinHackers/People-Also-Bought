@@ -44,10 +44,10 @@ const queries = {
       AND alsobought.company_id = companies.id
       AND prices.company_id = companies.id`,
   ),
-  getCurrentId: () => db.any('SELECT currval(companies_id_seq)'),
   insertCompany: ({ companyAbbr, company, percentage }) => db.any(
     `INSERT INTO companies (company_abbr, company, percentage)
-      VALUES ('${companyAbbr}', '${company}', ${percentage})`,
+      VALUES ('${companyAbbr}', '${company}', ${percentage})
+      RETURNING id`,
   ),
   insertAlsoBought: (companyId, alsoBought) => Promise.all(alsoBought
     .map(alsoBoughtId => db.any(
@@ -55,8 +55,8 @@ const queries = {
       VALUES (${companyId}, ${alsoBoughtId})`,
     ))),
   insertPrices: (companyId, currentDay) => Promise.all(currentDay
-    .map(currentPrice => db.any(
-      `INSERT INTO alsobought (company_id, alsobought_id)
+    .map(({ currentPrice }) => db.any(
+      `INSERT INTO prices (company_id, current_price)
       VALUES (${companyId}, ${currentPrice})`,
     ))),
 };

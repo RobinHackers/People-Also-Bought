@@ -14,7 +14,7 @@ const controller = {
         .then(data => res.json(data))
         .catch(error => res.status('400').send(error.stack));
     },
-    // curl -d '{"companyAbbr":"ZZZZZ", "company":"Zip Zap", "percentage": 100, "alsoBought":[0,1,2,3,4,5,6,7,8,9,10,11], "currentDay":[{"currentPrice": "100.10"}]}' -H "Content-Type: application/json" -X POST http://localhost:7878/api/company/
+    // curl -d '{"companyAbbr":"ZZZZY", "company":"Zip Zap", "percentage": 100, "alsoBought":[0,1,2,3,4,5,6,7,8,9,10,11], "currentDay":[{"currentPrice": "100.10"}]}' -H "Content-Type: application/json" -X POST http://localhost:7878/api/company/
     post: (req, res) => {
       model.company.post(req.body)
         .then(() => res.send())

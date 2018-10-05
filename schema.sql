@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS prices;
 
 CREATE TABLE companies (
   id SERIAL PRIMARY KEY,
-  company_abbr VARCHAR(5) NOT NULL,
+  company_abbr VARCHAR(5) NOT NULL UNIQUE,
   company VARCHAR(25) NOT NULL,
   percentage SMALLINT NOT NULL
 );
