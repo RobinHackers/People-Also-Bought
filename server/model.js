@@ -1,54 +1,41 @@
-const Company = require('../database');
-
-const addToDb = (entry, cb) => {
-  entry.save((err) => {
-    if (err) { return cb(err); }
-    return cb();
-  });
-};
+const queries = require('../database');
 
 const model = {
   peopleAlsoBought: {
-    get: (company, cb) => {
-      Company.find({ company }, (err1, data) => {
-        if (err1) { return cb(err1); }
-        let { group } = data[0];
-        group = (group % 8) + 1;
-        return Company.find({ group }, (err2, companies) => {
-          if (err2) { return cb(err2); }
-          return cb(null, companies);
-        });
-      });
-    },
+    get: companyAbbreviation => queries.getAlsoBoughtByAbbreviation(companyAbbreviation)
+      .then((data) => {
+        const numOfPricePerEntry = data.length / 12;
+        const companies = data
+          .filter((_company, idx) => idx % numOfPricePerEntry === 0)
+          .map(company => ({
+            id: company.id,
+            companyAbbr: company.company_abbr,
+            company: company.company,
+            percentage: company.percentage,
+          }));
+        const prices = data.map(company => ({
+          currentPrice: Number(company.current_price.slice(1)),
+        }));
+        for (let i = 0; i < 12; i += 1) {
+          companies[i].currentDay = prices
+            .slice(numOfPricePerEntry * i, numOfPricePerEntry * (i + 1));
+        }
+        return companies;
+      })
+      .catch(error => console.log(error)),
   },
   company: {
-    get: (company, cb) => {
-      Company.find({ company }, (err1, data) => {
-        if (err1) { return cb(err1); }
-        return cb(null, data);
-      });
+    get: (companyAbbreviation, cb) => {
     },
     post: (body, cb) => {
-      Company.find({ company: body.company }, (err, data) => {
-        if (err) { return cb(err); }
-        if (!data) { return addToDb(new Company(body), cb); }
-        if (data) { console.log('ALREADY THERE'); }
-        return cb();
-      });
     },
     put: (body, cb) => {
-      Company.findOneAndUpdate({ company: body.company }, body, (err, data) => {
-        if (err) { return cb(err); }
-        if (!data) { return addToDb(new Company(body), cb); }
-        return cb();
-      });
     },
-    delete: (company, cb) => {
-      Company.findOneAndDelete({ company }, (err, data) => {
-        if (err) { return cb(err); }
-        if (!data) { console.log('DATA NOT FOUND'); }
-        return cb();
-      });
+    delete: (companyAbbreviation, cb) => {
+    },
+    prices: {
+      post: (body, cb) => {
+      },
     },
   },
 };

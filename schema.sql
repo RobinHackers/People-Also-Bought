@@ -1,13 +1,16 @@
+CREATE DATABASE robinhood;
+
+\c robinhood;
+
 DROP TABLE IF EXISTS companies;
 DROP TABLE IF EXISTS alsobought;
 DROP TABLE IF EXISTS prices;
 
 CREATE TABLE companies (
-  id INT NOT NULL,
+  id SERIAL PRIMARY KEY,
   company_abbr VARCHAR(5) NOT NULL,
   company VARCHAR(25) NOT NULL,
-  percentage SMALLINT NOT NULL,
-  PRIMARY KEY (id)
+  percentage SMALLINT NOT NULL
 );
 
 CREATE TABLE alsobought (

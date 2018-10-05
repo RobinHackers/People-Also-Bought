@@ -39,8 +39,9 @@ npm install
 
 ## CRUD
 
- - GET    /api/peopleAlsoBought/:company
- - GET    /api/company/:company
+ - GET    /api/peopleAlsoBought/:companyAbbreviation
+ - GET    /api/company/:companyAbbreviation
  - POST   /api/company
+ - POST   /api/company/prices/:companyId
  - PUT    /api/company
- - DELETE /api/company/:company
+ - DELETE /api/company/:companyAbbreviation

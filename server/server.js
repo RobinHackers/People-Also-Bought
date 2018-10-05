@@ -10,7 +10,7 @@ app.set('PORT', 7878);
 app.use(parser.json());
 app.use(morgan('dev'));
 
-app.use('/:company', express.static('public'));
+app.use('/:companyAbbreviation', express.static('public'));
 
 app.use('/api', router);
 

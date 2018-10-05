@@ -106,7 +106,7 @@ class App extends React.Component {
         if (i++) {
           theLoop(i);
         }
-      }, 10000);
+      }, 1000);
     };
     theLoop(1);
   }
