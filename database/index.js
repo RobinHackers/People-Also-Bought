@@ -52,13 +52,24 @@ const queries = {
   insertAlsoBought: (companyId, alsoBought) => Promise.all(alsoBought
     .map(alsoBoughtId => db.any(
       `INSERT INTO alsobought (company_id, alsobought_id)
-      VALUES (${companyId}, ${alsoBoughtId})`,
+        VALUES (${companyId}, ${alsoBoughtId})`,
     ))),
   insertPrices: (companyId, currentDay) => Promise.all(currentDay
     .map(({ currentPrice }) => db.any(
       `INSERT INTO prices (company_id, current_price)
-      VALUES (${companyId}, ${currentPrice})`,
+        VALUES (${companyId}, ${currentPrice})`,
     ))),
+  insertPrice: (companyId, currentPrice) => db.any(
+    `INSERT INTO prices (company_id, current_price)
+      VALUES (${companyId}, ${currentPrice})`,
+  ),
+  deleteCompany: companyAbbr => db.any(
+    `DELETE FROM companies 
+      WHERE company_abbr = '${companyAbbr}'
+      RETURNING id`,
+  ),
+  deleteAlsoBought: companyId => db.any(`DELETE FROM alsobought WHERE company_id = '${companyId}'`),
+  deletePrices: companyId => db.any(`DELETE FROM prices WHERE company_id = '${companyId}'`),
 };
 
 module.exports = queries;

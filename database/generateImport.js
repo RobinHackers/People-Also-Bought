@@ -3,7 +3,7 @@ const fs = require('fs');
 const filepath = './database/import.sql';
 
 const append = (i, table, header) => {
-  const data = `\\COPY ${table} (${header}) FROM './seeds/${table}_${i}.csv' WITH QUOTE AS '\`' DELIMITER AS '|' CSV HEADER;\n`;
+  const data = `\\COPY ${table} (${header}) FROM './seeds/${table}_${i}.csv' CSV HEADER;\n`;
   fs.appendFile(filepath, data, (error) => {
     if (error) { console.log(error); }
   });

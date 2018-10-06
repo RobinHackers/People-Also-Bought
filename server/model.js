@@ -47,11 +47,18 @@ const model = {
       }),
     put: (body) => {
     },
-    delete: (companyAbbreviation) => {
-    },
+    delete: companyAbbr => queries.deleteCompany(companyAbbr)
+      .then((data) => {
+        console.log(data[0].id);
+        const remove = [
+          queries.deleteAlsoBought(data[0].id),
+          queries.deletePrices(data[0].id),
+        ];
+        return Promise.all(remove);
+      }),
     prices: {
-      post: (body) => {
-      },
+      post: (companyId, body) => queries.insertPrice(companyId, body.currentPrice),
+      delete: companyId => queries.deletePrices(companyId),
     },
   },
 };

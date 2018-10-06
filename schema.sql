@@ -1,6 +1,8 @@
 CREATE DATABASE robinhood;
-
 \c robinhood;
+
+-- CREATE DATABASE robinhood_replica;
+-- \c robinhood_replica
 
 DROP TABLE IF EXISTS companies;
 DROP TABLE IF EXISTS alsobought;

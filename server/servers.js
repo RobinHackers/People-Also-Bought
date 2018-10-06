@@ -3,12 +3,15 @@ const parser = require('body-parser');
 
 const router = require('./routes');
 
+const HOST = process.env.HOST || 'localhost';
+
+
 // --- Server 1 ---
 const server1 = express();
 server1.use(parser.json());
 server1.use('/api', router);
 server1.set('PORT', 3000);
-server1.listen(server1.get('PORT'), () => {
+server1.listen(server1.get('PORT'), HOST, () => {
   console.log(`Server 1 is listening to ${server1.get('PORT')}`);
 });
 
@@ -18,7 +21,7 @@ const server2 = express();
 server2.use(parser.json());
 server2.use('/api', router);
 server2.set('PORT', 3001);
-server2.listen(server2.get('PORT'), () => {
+server2.listen(server2.get('PORT'), HOST, () => {
   console.log(`Server 2 is listening to ${server2.get('PORT')}`);
 });
 
@@ -28,7 +31,7 @@ const server3 = express();
 server3.use(parser.json());
 server3.use('/api', router);
 server3.set('PORT', 3002);
-server3.listen(server3.get('PORT'), () => {
+server3.listen(server3.get('PORT'), HOST, () => {
   console.log(`Server 3 is listening to ${server3.get('PORT')}`);
 });
 
@@ -38,6 +41,6 @@ const server4 = express();
 server4.use(parser.json());
 server4.use('/api', router);
 server4.set('PORT', 3003);
-server4.listen(server4.get('PORT'), () => {
+server4.listen(server4.get('PORT'), HOST, () => {
   console.log(`Server 4 is listening to ${server4.get('PORT')}`);
 });

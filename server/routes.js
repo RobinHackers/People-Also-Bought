@@ -13,7 +13,8 @@ router.route('/company/:companyAbbr')
   .delete(controller.company.delete);
 
 router.route('/company/prices/:companyId')
-  .post(controller.company.prices.post);
+  .post(controller.company.prices.post)
+  .delete(controller.company.prices.delete);
 
 
 module.exports = router;
