@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:7878'
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 500
+      name: "Warm up the application"
+    - duration: 600
+      arrivalRate: 500
+      name: "Sustained high load"
+  payload:
+    path: 'shells.csv'
+    fields:
+      - "companyAbbr"
+      - "company"
+      - "percentage"
+scenarios:
+  - name: "Get by Company Abbreviation"
+    flow:
+      - get:
+          url: "/api/people-also-bought/{{ companyAbbr }}"

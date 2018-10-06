@@ -13,8 +13,8 @@ const write = (data, page, file, chunks, i = 0) => {
   const chunk = data.slice(chunkSize * i, chunkSize * (i + 1));
   if (chunk.length > 0) {
     const csv = i !== 0
-      ? `${json2csv(chunk, { header: false, delimiter: '|', quote: '`' })}\n`
-      : `${json2csv(chunk, { delimiter: '|', quote: '`' })}\n`;
+      ? `${json2csv(chunk, { header: false })}\n`
+      : `${json2csv(chunk)}\n`;
     fs.appendFile(`./seeds/${file}_${page}.csv`, csv, (err) => {
       if (err) { console.log(err); }
       write(data, page, file, chunks, i + 1);

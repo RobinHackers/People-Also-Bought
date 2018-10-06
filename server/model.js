@@ -21,8 +21,7 @@ const model = {
             .slice(numOfPricePerEntry * i, numOfPricePerEntry * (i + 1));
         }
         return companies;
-      })
-      .catch(error => console.log(error)),
+      }),
   },
   company: {
     get: companyAbbreviation => queries.getCompanyByAbbreviation(companyAbbreviation)

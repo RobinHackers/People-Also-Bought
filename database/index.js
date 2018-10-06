@@ -2,9 +2,9 @@ const Promise = require('bluebird');
 
 const initOptions = {
   promiseLib: Promise,
-  query(event) {
-    console.log('QUERY:', event.query);
-  },
+  // query(event) {
+  //   console.log('QUERY:', event.query);
+  // },
   error(error, event) {
     if (event.cn) {
       console.log('CN:', event.cn);
