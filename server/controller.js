@@ -1,5 +1,5 @@
 const model = require('./model');
-const client = require('./index');
+const { client } = require('./redis');
 
 const controller = {
   peopleAlsoBought: {
@@ -9,6 +9,9 @@ const controller = {
         res.json(data);
       })
       .catch(error => res.status('400').send(error.stack)),
+    // get: (req, res) => model.peopleAlsoBought.get(req.params.companyAbbr)
+    //   .then(data => res.json(data))
+    //   .catch(error => res.status('400').send(error.stack)),
   },
   company: {
     get: (req, res) => model.company.get(req.params.companyAbbr)

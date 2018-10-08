@@ -1,7 +1,7 @@
 config:
-  target: 'http://localhost:7878'
+  target: 'http://localhost:8888'
   phases:
-    - duration: 30
+    - duration: 60
       arrivalRate: 5
       rampTo: 250
       name: "Warming up the application"
@@ -35,9 +35,21 @@ scenarios:
           url: "/api/people-also-bought/{{ comp3 }}/"
       - get:
           url: "/api/people-also-bought/{{ comp4 }}/"
-  - name: "Post new prices"
-    flow:
-      - post:
-          url: "/api/company/prices/10000017/"
-          json:
-            currentPrice: "999.99"
+      # - get:
+      #     url: "/api/people-also-bought/{{ comp5 }}/"
+      # - get:
+      #     url: "/api/people-also-bought/{{ comp6 }}/"
+      # - get:
+      #     url: "/api/people-also-bought/{{ comp7 }}/"
+      # - get:
+      #     url: "/api/people-also-bought/{{ comp8 }}/"
+      # - get:
+      #     url: "/api/people-also-bought/{{ comp9 }}/"
+  # - name: "Post new prices"
+  #   flow:
+  #     - loop:
+  #       - post:
+  #           url: "/api/company/prices/10000017/"
+  #           json:
+  #             currentPrice: "999.99"
+  #       count: 5

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
+
 router.route('/people-also-bought/:companyAbbr')
   .get(controller.peopleAlsoBought.get);
 
