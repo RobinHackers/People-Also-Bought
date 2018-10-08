@@ -35,16 +35,16 @@ scenarios:
           url: "/api/people-also-bought/{{ comp3 }}/"
       - get:
           url: "/api/people-also-bought/{{ comp4 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp5 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp6 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp7 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp8 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp9 }}/"
+      - get:
+          url: "/api/people-also-bought/{{ comp5 }}/"
+      - get:
+          url: "/api/people-also-bought/{{ comp6 }}/"
+    #   - get:
+    #       url: "/api/people-also-bought/{{ comp7 }}/"
+    #   - get:
+    #       url: "/api/people-also-bought/{{ comp8 }}/"
+    #   - get:
+    #       url: "/api/people-also-bought/{{ comp9 }}/"
   # - name: "Post new prices"
   #   flow:
   #     - loop:

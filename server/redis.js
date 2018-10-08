@@ -1,7 +1,6 @@
 const redis = require('redis');
 const path = require('path');
 
-
 const client = redis.createClient(process.env.REDIS_PORT || 6379);
 
 const cache = (req, res, next) => {
