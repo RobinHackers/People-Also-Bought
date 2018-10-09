@@ -3,10 +3,10 @@ config:
   phases:
     - duration: 60
       arrivalRate: 5
-      rampTo: 250
+      rampTo: 50
       name: "Warming up the application"
     - duration: 300
-      arrivalRate: 250
+      arrivalRate: 50
       name: "Sustaining high load"
   payload:
     -
@@ -36,16 +36,16 @@ scenarios:
           url: "/api/people-also-bought/{{ comp3 }}/"
       - get:
           url: "/api/people-also-bought/{{ comp4 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp5 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp6 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp7 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp8 }}/"
-      # - get:
-      #     url: "/api/people-also-bought/{{ comp9 }}/"
+      - get:
+          url: "/api/people-also-bought/{{ comp5 }}/"
+      - get:
+          url: "/api/people-also-bought/{{ comp6 }}/"
+      - get:
+          url: "/api/people-also-bought/{{ comp7 }}/"
+      - get:
+          url: "/api/people-also-bought/{{ comp8 }}/"
+      - get:
+          url: "/api/people-also-bought/{{ comp9 }}/"
   # - name: "Post new prices"
   #   weight: 800
   #   flow:

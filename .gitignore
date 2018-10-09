@@ -28,4 +28,4 @@ public/bundle.js
 seeds/
 dataGeneration/seed_*.js
 
-newrelic.js
+/newrelic.js
