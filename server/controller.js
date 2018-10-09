@@ -5,10 +5,11 @@ const controller = {
   peopleAlsoBought: {
     get: (req, res) => model.peopleAlsoBought.get(req.params.companyAbbr)
       .then((data) => {
-        client.setex(req.params.companyAbbr, 1200, JSON.stringify(data));
+        client.setex(req.params.companyAbbr, 600, JSON.stringify(data));
         res.json(data);
       })
       .catch(error => res.status('400').send(error.stack)),
+    // MOVE CACHING TO BALANCER
     // get: (req, res) => model.peopleAlsoBought.get(req.params.companyAbbr)
     //   .then(data => res.json(data))
     //   .catch(error => res.status('400').send(error.stack)),
@@ -30,7 +31,7 @@ const controller = {
       post: (req, res) => model.company.prices.post(req.params.companyId, req.body)
         .then(() => res.send())
         .catch(error => res.status('400').send(error)),
-      delete: (req, res) => model.company.prices.delete(req.params.companyId, req.body)
+      delete: (req, res) => model.company.prices.delete(req.params.companyId)
         .then(() => res.send())
         .catch(error => res.status('400').send(error)),
     },

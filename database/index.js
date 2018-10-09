@@ -18,11 +18,11 @@ const db = pgp({ database: 'robinhood' });
 
 const queries = {
   getAlsoBoughtByAbbreviation: companyAbbreviation => db.any(
-    `SELECT companies.*, prices.current_price FROM companies, alsobought, prices
-      WHERE alsobought.company_id = (
-        SELECT id FROM companies WHERE company_abbr = '${companyAbbreviation}'
-      ) AND companies.id = alsobought.alsobought_id
-      AND companies.id = prices.company_id;`,
+    `SELECT comp_a.*, prices.current_price FROM companies AS comp_a
+      INNER JOIN alsobought ON comp_a.id = alsobought.alsobought_id
+      INNER JOIN companies AS comp_b ON comp_b.company_abbr = '${companyAbbreviation}'
+      AND comp_b.id = alsobought.company_id
+      INNER JOIN prices ON alsobought.alsobought_id = prices.company_id;`,
   ),
   getAlsoBoughtById: companyId => db.any(
     `SELECT companies.*, prices.current_price FROM companies, alsobought, prices
@@ -31,14 +31,14 @@ const queries = {
       AND companies.id = prices.company_id;`,
   ),
   getCompanyByAbbreviation: companyAbbreviation => db.any(
-    `SELECT companies.*, alsobought.alsobought_id, prices.current_price 
+    `SELECT companies.*, alsobought.alsobought_id, prices.current_price
       FROM companies, alsobought, prices
       WHERE companies.company_abbr = '${companyAbbreviation}'
       AND alsobought.company_id = companies.id
       AND prices.company_id = companies.id`,
   ),
   getCompanyById: companyId => db.any(
-    `SELECT companies.*, alsobought.alsobought_id, prices.current_price 
+    `SELECT companies.*, alsobought.alsobought_id, prices.current_price
       FROM companies, alsobought, prices
       WHERE companies.id = '${companyId}'
       AND alsobought.company_id = companies.id
@@ -64,7 +64,7 @@ const queries = {
       VALUES (${companyId}, ${currentPrice})`,
   ),
   deleteCompany: companyAbbr => db.any(
-    `DELETE FROM companies 
+    `DELETE FROM companies
       WHERE company_abbr = '${companyAbbr}'
       RETURNING id`,
   ),
