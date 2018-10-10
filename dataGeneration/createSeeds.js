@@ -12,9 +12,9 @@ const write = (data, page, file, chunks, i = 0) => {
   const chunkSize = Math.ceil(size / chunks);
   const chunk = data.slice(chunkSize * i, chunkSize * (i + 1));
   if (chunk.length > 0) {
-    const csv = i !== 0
-      ? `${json2csv(chunk, { header: false })}\n`
-      : `${json2csv(chunk)}\n`;
+    const csv = i === 0
+      ? `${json2csv(chunk)}\n`
+      : `${json2csv(chunk, { header: false })}\n`;
     fs.appendFile(`./seeds/${file}_${page}.csv`, csv, (err) => {
       if (err) { console.log(err); }
       write(data, page, file, chunks, i + 1);
@@ -30,7 +30,7 @@ const createSeeds = (data) => {
     // Generate alsobought join information
     for (let i = 0; i < 12; i++) {
       alsoBought.push({
-        companyId: item.id,
+        companyId: item.id + 1,
         alsoboughtId: generateRandomInt(10000016, 1),
       });
     }
@@ -39,7 +39,7 @@ const createSeeds = (data) => {
     for (let i = 0; i < 24; i++) {
       currentPrice *= (0.984375 + Math.random() / 32);
       todaysPrice.push({
-        companyId: item.id,
+        companyId: item.id + 1,
         currentPrice: currentPrice.toFixed(2),
       });
     }

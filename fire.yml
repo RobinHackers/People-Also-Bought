@@ -3,10 +3,10 @@ config:
   phases:
     - duration: 60
       arrivalRate: 5
-      rampTo: 50
+      rampTo: 10
       name: "Warming up the application"
     - duration: 300
-      arrivalRate: 50
+      arrivalRate: 10
       name: "Sustaining high load"
   payload:
     -

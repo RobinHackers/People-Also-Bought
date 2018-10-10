@@ -29,12 +29,12 @@ CREATE TABLE prices (
 -- QUERYING
 -- \timing
 
--- select companies.* from companies, alsobought 
+-- select companies.* from companies, alsobought
 -- where alsobought.company_id = (
 --   select id from companies where company_abbr = 'AGSDV'
 -- ) and companies.id = alsobought.alsobought_id;
 
--- select companies.* from companies, alsobought 
+-- select companies.* from companies, alsobought
 -- where alsobought.company_id = (
 --   select id from companies where company_abbr = 'AGSDV'
 -- ) and companies.id = alsobought.alsobought_id;

@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const filepath = './database/import.sql';
+// const filepath = './transfer.sql';
 
 const append = (i, table, header) => {
   const data = `\\COPY ${table} (${header}) FROM './seeds/${table}_${i}.csv' CSV HEADER;\n`;
@@ -27,4 +28,10 @@ fs.writeFile(filepath, header, (e) => {
     append(i, 'alsobought', 'company_id, alsobought_id');
     append(i, 'prices', 'company_id, current_price');
   }
+  // for (let i = 0; i < 26; i++) {
+  //   append(i, 'alsobought', 'company_id, alsobought_id');
+  // }
+  // for (let i = 0; i < 26; i++) {
+  //   append(i, 'companies', 'company_abbr, company, percentage');
+  // }
 });

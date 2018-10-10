@@ -14,7 +14,14 @@ const initOptions = {
 };
 const pgp = require('pg-promise')(initOptions);
 
-const db = pgp({ database: 'robinhood' });
+const cn = {
+  host: 'ec2-54-145-32-83.compute-1.amazonaws.com',
+  user: 'power_user',
+  password: '$nopass',
+  database: 'robinhood',
+};
+
+const db = pgp(cn);
 
 const queries = {
   getAlsoBoughtByAbbreviation: companyAbbreviation => db.any(

@@ -1,18 +1,10 @@
 const model = require('./model');
-const { client } = require('./redis');
 
 const controller = {
   peopleAlsoBought: {
     get: (req, res) => model.peopleAlsoBought.get(req.params.companyAbbr)
-      .then((data) => {
-        client.setex(req.params.companyAbbr, 600, JSON.stringify(data));
-        res.json(data);
-      })
+      .then(data => res.json(data))
       .catch(error => res.status('400').send(error.stack)),
-    // MOVE CACHING TO BALANCER
-    // get: (req, res) => model.peopleAlsoBought.get(req.params.companyAbbr)
-    //   .then(data => res.json(data))
-    //   .catch(error => res.status('400').send(error.stack)),
   },
   company: {
     get: (req, res) => model.company.get(req.params.companyAbbr)
